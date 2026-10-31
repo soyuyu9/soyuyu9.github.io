@@ -1,0 +1,131 @@
+/* Homepage — draft based on jong980812.github.io: top bar, intro, education, news, publications, footer. */
+
+:root {
+    /* white paper, deep ink, one sage-teal accent */
+    --bg: #FFFFFF;
+    --ink: #1E2328;
+    --muted: #2A2F35;
+    --line: #E2E5E7;
+    --line-soft: #ECEEEF;
+    --rule: #CCD1D4;
+    --accent: #4A706A;
+    --head: 'Plus Jakarta Sans', 'Source Sans 3', sans-serif;
+    --body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 16.5px/1.6 var(--body);
+    -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+b, strong { font-weight: 700; }
+
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- Top bar ---------- */
+
+.topbar { border-bottom: 1px solid var(--line); }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+.brand { font: 700 21px var(--head); color: var(--ink); letter-spacing: -0.01em; }
+.brand:hover { text-decoration: none; }
+.topbar nav { display: flex; gap: 28px; font-size: 16.5px; font-weight: 600; }
+.topbar nav a { color: var(--ink); }
+.topbar nav a:hover { color: var(--accent); text-decoration: none; }
+
+/* ---------- Intro: portrait | name, bio, links ---------- */
+
+.intro {
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+    padding: 44px 0 48px;
+}
+
+.portrait {
+    display: block;
+    width: 160px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+.intro h1 { margin: 0; font: 700 44px/1.05 var(--head); letter-spacing: -0.025em; }
+.aff { margin: 10px 0 14px; font-size: 15px; line-height: 1.55; color: var(--muted); }
+.bio { margin: 0 0 14px; font-size: 17px; line-height: 1.6; max-width: 40em; }
+.keywords { margin: 0 0 14px; font-size: 15px; color: var(--muted); max-width: 44em; }
+.keywords em { font-style: normal; font-weight: 700; color: var(--ink); }
+.status { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; font-weight: 700; }
+.status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(95, 130, 112, .18); }
+.links { margin: 0; display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 15px; font-weight: 600; }
+.links a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+.links a:hover { color: var(--accent); }
+
+/* ---------- Sections ---------- */
+
+section { padding: 8px 0 36px; scroll-margin-top: 16px; }
+
+.sec-head { margin-bottom: 18px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+.sec-head h2 { margin: 0; font: 700 25px var(--head); letter-spacing: -0.015em; }
+
+.sub { margin: 26px 0 8px; font: 700 17px var(--head); }
+.sub:first-of-type { margin-top: 0; }
+
+/* Education & news share the date | text row */
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows li { display: grid; grid-template-columns: 120px 1fr; gap: 12px; padding: 5px 0; font-size: 16px; }
+.rows time { font: 400 14px/1.75 var(--mono); color: var(--muted); }
+.rows li.latest time { color: var(--accent); font-weight: 500; }
+.rows .detail { display: block; font-size: 15px; color: var(--muted); }
+
+/* Publications */
+.pubs { list-style: none; margin: 0; padding: 0; }
+.pubs li { padding: 10px 0; border-bottom: 1px solid var(--line-soft); font-size: 15.5px; line-height: 1.55; }
+.pubs li:last-child { border-bottom: 0; }
+.pubs .title { display: block; font: 700 16.5px/1.4 var(--head); letter-spacing: -0.01em; color: var(--ink); }
+.pubs .au { display: block; color: #3E444B; }
+.pubs .meta { display: block; color: var(--muted); }
+.venue { font-weight: 700; color: var(--ink); }
+.venue i { font-weight: 600; }
+.tag { font-style: italic; }
+
+/* Footer */
+.foot { margin-top: 24px; border-top: 1px solid var(--line); }
+.foot .wrap { display: flex; justify-content: space-between; gap: 16px; padding-top: 18px; padding-bottom: 32px; font-size: 14px; color: var(--muted); }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 680px) {
+    body { font-weight: 500; color: #1A1E23; }
+    .wrap { padding: 0 16px; }
+    .topbar nav { gap: 16px; font-size: 15.5px; }
+    .topbar .brand { display: none; }
+    .topbar .wrap { justify-content: center; }
+    .intro { grid-template-columns: 84px minmax(0, 1fr); column-gap: 14px; row-gap: 0; padding-top: 24px; }
+    .intro-main { display: contents; }
+    .portrait { grid-column: 1; grid-row: 1 / span 2; width: 84px; height: 105px; }
+    .intro h1 { grid-column: 2; grid-row: 1; align-self: end; font-size: 30px; }
+    .aff { grid-column: 2; grid-row: 2; align-self: start; margin: 6px 0 0; font-size: 14px; }
+    .bio, .keywords, .status, .links { grid-column: 1 / -1; }
+    .bio { margin-top: 18px; font-size: 16.5px; }
+    .rows li { grid-template-columns: 1fr; gap: 0; }
+    .foot .wrap { flex-direction: column; }
+}
+
+/* iOS WebKit can draw variable fonts at their thin default instance; set the weight axis explicitly. */
+body { font-variation-settings: "wght" 400; }
+b, strong { font-variation-settings: "wght" 700; }
+.rows li.latest time { font-variation-settings: "wght" 500; }
+.topbar nav, .links, .venue i { font-variation-settings: "wght" 600; }
+.brand, .intro h1, .status, .sec-head h2, .sub, .pubs .title, .venue, .keywords em { font-variation-settings: "wght" 700; }
+@media (max-width: 680px) { body { font-variation-settings: "wght" 500; } }
