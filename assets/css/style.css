@@ -100,6 +100,13 @@ section { padding: 8px 0 40px; scroll-margin-top: 16px; }
 .edu .degree { display: block; font-weight: 600; color: var(--accent-dark); }
 .edu .detail { display: block; font-size: 14.5px; color: var(--muted); }
 
+/* Scholarships: compact year | name | amount rows */
+.list { list-style: none; margin: 0; padding: 0; }
+.list li { display: grid; grid-template-columns: 110px 1fr auto; gap: 16px; padding: 7px 0; font-size: 15.5px; border-bottom: 1px solid var(--line-soft); }
+.list li:last-child { border-bottom: 0; }
+.list time { font-size: 14px; line-height: 1.7; color: var(--muted); font-variant-numeric: tabular-nums; }
+.list .amt { font-size: 14px; line-height: 1.7; font-weight: 600; color: var(--accent-dark); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
 /* News: a thin timeline */
 .news { list-style: none; margin: 0; padding: 0 0 0 20px; border-left: 2px solid var(--line); }
 .news li { position: relative; display: grid; grid-template-columns: 76px 1fr; gap: 12px; padding: 5px 0; font-size: 15.5px; }
@@ -145,5 +152,7 @@ a.title:hover { color: var(--accent); }
     .bio { margin-top: 18px; }
     .status { justify-self: start; padding: 6px 12px; font-size: 14px; }
     .edu li, .news li { grid-template-columns: 1fr; gap: 0; }
+    .list li { grid-template-columns: 1fr auto; gap: 0 12px; }
+    .list time { grid-column: 1 / -1; }
     .foot .wrap { flex-direction: column; }
 }
